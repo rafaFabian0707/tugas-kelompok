@@ -23,8 +23,20 @@ void ascending(int array[], int kapsitas) {
 void descending() {// diaz
     cout << "halo";
 }
-void search() {// nayla
-    cout << "halo";
+void search(int array[], int kapasitas) {// nayla
+    int pilihan;
+    cout << "masukkan pilihan : ";
+    cin >> pilihan;
+    for (int i = 0; i < kapasitas; i++)
+    {
+        if (pilihan == array[i])
+        {
+            cout << "nilai kamu ada di index ke- " << i;
+            cout << "\ndengan nilai : "<< array[i];
+        }
+        
+    }
+    
 }
 void keluar(){// dila
 
@@ -33,13 +45,9 @@ void keluar(){// dila
 int main(){
     int nilai[10] = {75, 60, 85, 90, 70, 88, 65, 80, 93, 62};
     int size = 10;
+    
 
-    ascending(nilai, size);
-    cout << "ascending : ";
-    for (int elemen : nilai)
-    {
-        cout << elemen << " ";
-    }
+    search(nilai, size);
     
     
     return 0;
