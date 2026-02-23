@@ -2,16 +2,17 @@
 using namespace std;
 
 void ascending(int array[], int kapsitas) {
-    int temp;
-    for (int i = 0; i < kapsitas - 1; i++)// loop luar => 
+    int sementara;
+    for (int i = 0; i < kapsitas - 1; i++)// loop luar => untuk 9 kali putaran, setiap putaran menetukan angka terbesar ke terkecil, misalnya putaran 1 menetukan angka terbesar lalu putaran kedua menentukan angka terbesar kedua
     {
-        for (int j = 0; j < kapsitas - i - 1; j++)// loop dalam
+        for (int j = 0; j < kapsitas - i - 1; j++)// loop dalam +> looping untuk membandingka data-data di dalam array
         {
-            if (array[j] > array[j + 1])// kondisi
+            if (array[j] > array[j + 1])// if untuk membandingkan 2 angka yang bersebelahan, jika angka di sebelah kiri lebih besar maka akan ditukar posisinya dengan angka di sebelah kanan
             {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+                // mekanismenya : jika angka sebelah kiri lebih besar dari angka sebelah kanan
+                sementara = array[j]; //simpan angka sebelah kiri ke dalam variabel sementara
+                array[j] = array[j + 1]; // angka sebelah kanan dipindah ke kiri
+                array[j + 1] = sementara; // angka yang disimpan di variabel sementara(angka sebelah kiri) dipindah ke kanan
             }
             
         }
@@ -25,7 +26,7 @@ void descending() {// diaz
 void search() {// nayla
     cout << "halo";
 }
-void keluar(){// keluar
+void keluar(){// dila
 
 }
 
