@@ -1,5 +1,29 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+// Penggunaan class untuk menyatukan banyak nya fungsi yang sudah
+class Program {
+
+};
+// yoan
+void pembukaan() {
+
+    // pembukaan
+    cout << "Selamat Datang di Program Aplikasi Array!" << endl;
+    cout << "Berikut Adalah Tabel Nilai Kelas C" << endl;
+
+    // bagan tabel
+    cout << "---------------------------------------------" << endl;
+    cout << "|  NO |" << right << setw(10) 
+         << "NAMA Mahasiswa" << right << setw(20) 
+         << "|"  << right << setw(5) 
+         << " GENDER " 
+         << "| Nilai |" << endl;  
+    cout << "---------------------------------------------" << endl;
+
+    
+}
 
 void ascending(int array[], int kapsitas) {
     int sementara;
