@@ -7,20 +7,38 @@ class Program {
 
 };
 // yoan
-void pembukaan() {
+void pembukaan(string nama_mahasiwa[], 
+               int array[], 
+               int kapasitas,
+               char Gender[]) {
 
     // pembukaan
-    cout << "Selamat Datang di Program Aplikasi Array!" << endl;
-    cout << "Berikut Adalah Tabel Nilai Kelas C" << endl;
+    cout << "SELAMAT DATANG DI PROGRAM APLIKASI ARRAY!" << endl;
+    cout << "BERIKUT ADALAH TABEL NILAI KOM C" << endl;
 
     // bagan tabel
-    cout << "---------------------------------------------" << endl;
-    cout << "|  NO |" << right << setw(10) 
-         << "NAMA Mahasiswa" << right << setw(20) 
+    cout << "--------------------------------------------------------------------------------" << endl;
+    cout << "|  NO |" << right << setw(35) 
+         << "NAMA MAHASISWA" << right << setw(20) 
          << "|"  << right << setw(5) 
          << " GENDER " 
-         << "| Nilai |" << endl;  
-    cout << "---------------------------------------------" << endl;
+         << "|  NILAI |" << endl;  
+    cout << "--------------------------------------------------------------------------------" << endl;
+
+    // perulangan untuk tabel data
+    //  menggunakan kapasitas agar perulangan berhenti jika nilai
+    //  lebih kecil dari data yang tersedia.
+    for(int i = 0; i < kapasitas; i++) {
+        cout << "|" << right << setw(3) << i + 1 << right << setw(3) << "|" 
+             << left << setw(35) 
+             << nama_mahasiwa[i] << right << setw(20) << "|" 
+             << right << setw(5) << Gender[i] << right << setw(5) << " | "
+             << right << setw(4) << array[i] << right << setw(4) << " |"
+             << endl;
+    }
+
+    //  penutup tabel
+    cout << "--------------------------------------------------------------------------------" << endl;
 
     
 }
@@ -67,11 +85,24 @@ void keluar(){// dila
 }
 
 int main(){
+
+    // data nama mahasiswa
+    string nama_mahasiswa[10] = {" Deyoan Salsabila", " Naydila Chairunnisa Rambe", " Diaz Pranata Ginting", 
+                                 " Rafa Fabian", " Nayla Talisa", " M. Farhan Praditya Harahap", 
+                                 " Farah Al Fariz Pane", " Muhammad Azizi", " Faridha Izzati Hasugian", 
+                                 " Chindi Christina Rajagukguk"};
+    char gender[10] = {'P', 'P', 'L', 'L', 'P',
+                       'L', 'P', 'L', 'P', 'P' };
+    
+    // data nilai mahasiswa
     int nilai[10] = {75, 60, 85, 90, 70, 88, 65, 80, 93, 62};
     int size = 10;
+
+    // memanggil fungsi pembukaan 
+    pembukaan(nama_mahasiswa, nilai, size, gender);
     
 
-    search(nilai, size);
+    // search(nilai, size);
     
     
     return 0;
