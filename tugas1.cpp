@@ -3,8 +3,6 @@
 // biasanya dipakai untuk mengatur lebar kolom, rata kanan kiri, dan format tabel
 #include <iomanip>
 using namespace std;
-// namespace std;
-
 
 // yoan
 void pembukaan(string nama_mahasiwa[], 
@@ -73,13 +71,6 @@ void ascending(string nama_mahasiwa[],
         }
         
     }
-    cout << "[ ";
-    for (int i = 0; i < kapsitas - 1; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << "]\n";
-
     
 } 
    cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERKECIL!" << endl;
@@ -133,135 +124,45 @@ void descending(string nama_mahasiwa[],
             }
         }
     }
-<<<<<<< HEAD
-    cout << "[ ";
-    for (int i = 0; i < kapasitas - 1; i++)
-    {
-        cout << array[i] << " ";
-    }
-        cout << "]\n";
-
      cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERBESAR!" << endl;
-
 }
-void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
+void search(int array[], int kapasitas, string nama_mahasiswa[], char Gender[]) {// nayla
     int pilihan; // variabel untuk user input awal ingin search lewat nama atau nilai
     int cari_nilai; // variabel untuk mmenampung input user saat search lewat nilai
     string cari_nama; // variabel untuk menampung input user saat search lewat nama
-    bool ditemukan = false; // nilai boolean jika kedua cara tadi sudah sesuai dengan yang diinput user
-    
-    cout << "Ingin Mencari nilai lewat apa ?" << endl;
-    cout << "1. Nama" << endl;
-    cout << "2. Nilai" << endl;
-<<<<<<< HEAD
-    cin >> pilihan;
+     cout << "Masukkan Nilai yang ingin dicari: ";
+     cin >> cari_nilai;
 
-
-    if (pilihan == 1)
+    for (int i = 0; i < kapasitas; i++)
     {
-        cout << "masukkan nama : " << endl;
-        getline(cin, cari_nama);
-        for (int i = 0; i < kapasitas; i++)
+        if (cari_nilai == array[i])
         {
-            if (cari_nama == nama_mahasiswa[i])
-            {
-                cout << "Nama Mahasiswa     : " << nama_mahasiswa[i] << endl;
-                cout << "Nilai Mahasiswa    : " << array[i] << endl;
-            }
-            
+            cout << "DATA BERHASIL DITEMUKAN!" << endl;
+            cout << "--------------------------------------------------------------------------------" << endl;
+
+    // perulangan untuk tabel data
+    //  menggunakan kapasitas agar perulangan berhenti jika nilai
+    //  lebih kecil dari data yang tersedia.
+    
+        cout << "|" << right << setw(3) << i + 1 << right << setw(3) << "|" 
+             << left << setw(35) 
+             << nama_mahasiswa[i] << right << setw(20) << "|" 
+             << right << setw(5) << Gender[i] << right << setw(5) << " | "
+             << right << setw(4) << array[i] << right << setw(4) << " |"
+             << endl;
+    
+
+    //  penutup tabel
+    cout << "--------------------------------------------------------------------------------" << endl;
+        }
+        else{
+            cout << "Data Tidak Ditemukan" << endl;
+            break;
         }
         
     }
     
-
-        // switch (pilihan) {
-        //     case 1: cout << "Search Nama Yang Ingin Kamu Cari : ";
-        //             getline(cin,cari_nama);
-
-        //             for (int i = 0; i < kapasitas - 1; i++) {
-        //                 if (cari_nama == nama_mahasiswa[i])
-        //                 {
-        //                     cout << "Nama kamu ada di index ke - " << i + 1;
-        //                     cout << "\nDengan Nama : " << nama_mahasiswa[i];
-        //                     cout << "\nDengan Nilai : "<< array[i];
-        //                 // } else {
-        //                 //     cout << "Maaf, Gunakan Satu Kapital Disetiap Awal Nama" << endl;
-
-        //                     // while (cari_nama != nama_mahasiswa[i]) {
-        //                     //     cout << "Search Nama Yang Ingin Kamu Cari : ";
-        //                     //     getline(cin,cari_nama);
-        //                     // }
-                            
-        //                 } 
-        //             }
-        //     break;
-        //     case 2: cout << "Search Nilai Yang Ingin Kamu Cari : ";
-        //             cin >> cari_nilai;
-
-        //             for (int i = 0; i < kapasitas; i++) {
-        //                 if (pilihan == array[i])
-        //                 {
-        //                     cout << "Nilai kamu ada di index ke - " << i + 1;
-        //                     cout << "\nDengan Nama : " << nama_mahasiswa[i];
-        //                     cout << "\nDengan Nilai : "<< array[i];
-        //                 }
-        //             } 
-        //     break;
-        // };
-    
-}
-void menu(){// dila
-
-    cout << "\n" << endl;
-
-}
-=======
-    cout << "Masukkan Pilihan : ";
-    cin >> pilihan; // input awal user
-    cin.ignore(); // Menghapus karakter sisa di dalam buffer input, biasanya karakter ENTER (\n).
-
-    // penggunaan switch untuk mempermudah dalam program, karena yang diinput user hanya 1 angka
-        switch (pilihan) {
-            case 1: cout << "Search Nama Yang Ingin Kamu Cari : ";
-                    getline(cin,cari_nama); // untuk menerima input dari beberapa kata
-
-                            for (int i = 0; i < kapasitas; i++) { // perulangan jika index < dari total kapasitas(10) maka akan terus berulang untuk pengecekan
-                                    if (cari_nama == nama_mahasiswa[i]) { //validasi untuk input nama
-                                        cout << "Nama kamu ada Pada Kolom Nomor - " << i + 1;
-                                        cout << "\nDengan Nama : " << nama_mahasiswa[i];
-                                        cout << "\nDengan Nilai : "<< array[i] << endl;
-                                        ditemukan = true; //jika nama yang di iput sesuai dengan data, maka nilai boolean menjadi true.
-                                        break; //sistem rehat sejanak 
-                                   }     
-                            }
-
-                            if (!ditemukan){ //nilai "ditemukan = false", jadi kalau !, artinya nilai "ditemukan = true" yang dimana ini tidak sesuai dengan kondisi awal, maka sistem akan menjalankan fungsi ini.
-                                 cout << "Maaf, Tidak Ada Mahasiswa Dengan Nama " << cari_nama << endl;
-                                 cout << "Gunakan Satu Kapital Disetiap Awal Nama\n dan gunakan Nama Lengkap!" << endl;    
-                             }   
-                                                 
-                    break;
-                    case 2: 
-                                cout << "Search Nilai Yang Ingin Kamu Cari : ";
-                                cin >> cari_nilai; //untuk input user lewat nilai
-                                bool deitemukan = false;
-
-                                for (int i = 0; i < kapasitas; i++) {
-                                        if (cari_nilai == array[i]) {
-                                            cout << "Nilai kamu Ada Pada Kolom Nomor - " << i + 1;
-                                            cout << "\nDengan Nama : " << nama_mahasiswa[i];
-                                            cout << "\nDengan Nilai : "<< array[i] << endl;
-                                            ditemukan = true;
-                                       } 
-                                }    
-                                       if (!ditemukan) {
-                                        cout << "Maaf, Tidak Ada Mahasiswa Dengan Nilai " << cari_nilai << endl;  
-                                       }      
-                    break;
-                  
-              } 
           } 
->>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
 
 int main(){
 
@@ -280,20 +181,12 @@ int main(){
 
     do {
 
-<<<<<<< HEAD
-        
-=======
->>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
         cout << "=========== MENU ===========" << endl;
         cout << "1. Tampilkan Data" << endl;
         cout << "2. Mencari Suatu Nilai" << endl;
         cout << "3. Urutkan Nilai Ascending" << endl;
         cout << "4. Urutkan Nilai Descending" << endl;
         cout << "5. Keluar" << endl;
-<<<<<<< HEAD
-        cout << "Pilih mana manis :V >> \n";
-=======
->>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
         cout<<"Masukkan pilihan : ";
         cin >> pilih_menu;
 
@@ -301,7 +194,7 @@ int main(){
             case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
             break;
             case 2:system("cls"); // untuk membersihkan output setelah menekan   enter.
-                   search(nilai, size, nama_mahasiswa); // memanggil fungsi pembukaan
+                   search(nilai, size, nama_mahasiswa, gender); // memanggil fungsi pembukaan
             break;
             case 3: system("cls"); // untuk membersihkan output setelah menekan   enter.
                     ascending(nama_mahasiswa, nilai, size, gender); // memanggil fungsi ascending
