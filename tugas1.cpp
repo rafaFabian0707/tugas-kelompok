@@ -127,9 +127,8 @@ void descending(string nama_mahasiwa[],
      cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERBESAR!" << endl;
 }
 void search(int array[], int kapasitas, string nama_mahasiswa[], char Gender[]) {// nayla
-    int pilihan; // variabel untuk user input awal ingin search lewat nama atau nilai
     int cari_nilai; // variabel untuk mmenampung input user saat search lewat nilai
-    string cari_nama; // variabel untuk menampung input user saat search lewat nama
+    bool ditemukan = false;
      cout << "Masukkan Nilai yang ingin dicari: ";
      cin >> cari_nilai;
 
@@ -137,6 +136,7 @@ void search(int array[], int kapasitas, string nama_mahasiswa[], char Gender[]) 
     {
         if (cari_nilai == array[i])
         {
+            ditemukan = true;
             cout << "DATA BERHASIL DITEMUKAN!" << endl;
             cout << "--------------------------------------------------------------------------------" << endl;
 
@@ -150,17 +150,16 @@ void search(int array[], int kapasitas, string nama_mahasiswa[], char Gender[]) 
              << right << setw(5) << Gender[i] << right << setw(5) << " | "
              << right << setw(4) << array[i] << right << setw(4) << " |"
              << endl;
-    
+
 
     //  penutup tabel
     cout << "--------------------------------------------------------------------------------" << endl;
         }
-        else{
-            cout << "Data Tidak Ditemukan" << endl;
-            break;
-        }
-        
+    
     }
+     if(!ditemukan){
+            cout << "Data Tidak Ditemukan" << endl;
+        }
     
           } 
 
