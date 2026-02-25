@@ -6,10 +6,6 @@ using namespace std;
 // namespace std;
 
 
-// Penggunaan class untuk menyatukan banyak nya fungsi yang sudah
-class Program {
-
-};
 // yoan
 void pembukaan(string nama_mahasiwa[], 
                int array[], 
