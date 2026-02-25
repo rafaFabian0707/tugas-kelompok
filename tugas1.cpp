@@ -44,11 +44,16 @@ void pembukaan(string nama_mahasiwa[],
     
 }
 
-void ascending(int array[], int kapsitas) {
+void ascending(string nama_mahasiwa[], 
+               int array[], 
+               int kapasitas,
+               char Gender[]) {
     int sementara;
-    for (int i = 0; i < kapsitas - 1; i++)// loop luar => untuk 9 kali putaran, setiap putaran menetukan angka terbesar ke terkecil, misalnya putaran 1 menetukan angka terbesar lalu putaran kedua menentukan angka terbesar kedua
+    string NamaSementara; // variabel untuk menampung nama sementara saat proses tukar data
+    char GenderSementara; // variabel untuk menampung gender sementara saat proses tukar data
+    for (int i = 0; i < kapasitas - 1; i++)// loop luar => untuk 9 kali putaran, setiap putaran menetukan angka terbesar ke terkecil, misalnya putaran 1 menetukan angka terbesar lalu putaran kedua menentukan angka terbesar kedua
     {
-        for (int j = 0; j < kapsitas - i - 1; j++)// loop dalam +> looping untuk membandingka data-data di dalam array
+        for (int j = 0; j < kapasitas - i - 1; j++)// loop dalam +> looping untuk membandingka data-data di dalam array
         {
             if (array[j] > array[j + 1])// if untuk membandingkan 2 angka yang bersebelahan, jika angka di sebelah kiri lebih besar maka akan ditukar posisinya dengan angka di sebelah kanan
             {
@@ -56,18 +61,36 @@ void ascending(int array[], int kapsitas) {
                 sementara = array[j]; //simpan angka sebelah kiri ke dalam variabel sementara
                 array[j] = array[j + 1]; // angka sebelah kanan dipindah ke kiri
                 array[j + 1] = sementara; // angka yang disimpan di variabel sementara(angka sebelah kiri) dipindah ke kanan
-            }
+
+                // menukar nama
+                NamaSementara = nama_mahasiwa[j];
+                nama_mahasiwa[j] = nama_mahasiwa[j + 1];
+                nama_mahasiwa[j + 1] = NamaSementara;
+
+                // menukar gender
+                GenderSementara = Gender[j];
+                Gender[j] = Gender[j + 1];
+                Gender[j + 1] = GenderSementara;
             
         }
         
     }
     
-}
-void descending(int array[], int kapasitas) {
+} 
+   cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERKECIL!" << endl;
+} 
+
+void descending(string nama_mahasiwa[], 
+               int array[], 
+               int kapasitas,
+               char Gender[]) {
 
     int sementara; 
     // variabel ini cuma buat nampung angka sementara waktu proses tukar data
     // karena kalau langsung ditukar tanpa penampung, nilainya bisa hilang
+    string NamaSementara; // variabel untuk menampung nama sementara saat proses tukar data
+    char GenderSementara; // variabel untuk menampung gender sementara saat proses tukar data
+
 
     // loop luar ini buat ngatur berapa kali proses pengurutan dilakukan
     // misalnya ada 10 data, berarti maksimal 9 kali putaran
@@ -91,9 +114,21 @@ void descending(int array[], int kapasitas) {
                 // angka kanan dipindahkan ke kiri
                 array[j + 1] = sementara; 
                 // angka yang tadi disimpan dipindahkan ke kanan
+
+                // menukar nama
+                NamaSementara = nama_mahasiwa[j];
+                nama_mahasiwa[j] = nama_mahasiwa[j + 1];
+                nama_mahasiwa[j + 1] = NamaSementara;
+
+                // menukar gender
+                GenderSementara = Gender[j];
+                Gender[j] = Gender[j + 1];
+                Gender[j + 1] = GenderSementara;
+
             }
         }
     }
+     cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERBESAR!" << endl;
 }
 void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
     int pilihan;
@@ -170,36 +205,35 @@ int main(){
     int size = 10;
     int pilih_menu;
 
-    do
-    {
+    do {
 
-        
-    cout << "=========== MENU ===========" << endl;
-    cout << "1. Tampilkan Data" << endl;
-    cout << "2. Mencari Suatu Nilai" << endl;
-    cout << "3. Urutkan Nilai Ascending" << endl;
-    cout << "4. Urutkan Nilai Descending" << endl;
-    cout << "5. Keluar" << endl;
-    cout << "Pilih mana manis :V >> \n";
-    cout<<"Masukkan pilihan : ";
-    cin >> pilih_menu;
+        cout << "=========== MENU ===========" << endl;
+        cout << "1. Tampilkan Data" << endl;
+        cout << "2. Mencari Suatu Nilai" << endl;
+        cout << "3. Urutkan Nilai Ascending" << endl;
+        cout << "4. Urutkan Nilai Descending" << endl;
+        cout << "5. Keluar" << endl;
+        cout<<"Masukkan pilihan : ";
+        cin >> pilih_menu;
 
-        switch (pilih_menu) {
-        case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
-        break;
-        case 2: search(nilai, size, nama_mahasiswa); // memanggil fungsi pembukaan
-        break;
-        case 3: ascending(nilai, size); // memanggil fungsi ascending
-        break;
-        case 4: descending(nilai, size);
-        break;
-        case 5: cout << "Kamu Telah Keluar Dari Program";
-        break;
-        }
-    } while (pilih_menu != 5);
-    
-
-    
+            switch (pilih_menu) {
+            case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
+            break;
+            case 2:system("cls"); // untuk membersihkan output setelah menekan   enter.
+                   search(nilai, size, nama_mahasiswa); // memanggil fungsi pembukaan
+            break;
+            case 3: system("cls"); // untuk membersihkan output setelah menekan   enter.
+                    ascending(nama_mahasiswa, nilai, size, gender); // memanggil fungsi ascending
+                    pembukaan(nama_mahasiswa, nilai, size, gender);
+            break;
+            case 4: system("cls"); // untuk membersihkan output setelah menekan   enter.
+                    descending(nama_mahasiswa, nilai, size, gender);
+                    pembukaan(nama_mahasiswa, nilai, size, gender);
+            break;
+            case 5: cout << "Kamu Telah Keluar Dari Program";
+            break;
+            }
+        } while (pilih_menu != 5);
 
     return 0;
 }
