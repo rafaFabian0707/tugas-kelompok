@@ -12,7 +12,7 @@ class Program {
 void pembukaan(string nama_mahasiwa[], 
                int array[], 
                int kapasitas,
-               char Gender[]) {
+               char Gender[]) { //penggunaan parameter untuk mengefesiensi program karena di deklasrasikan 1 kali di dalam fungsi main.
 
     // pembukaan
     cout << "SELAMAT DATANG DI PROGRAM APLIKASI ARRAY!" << endl;
@@ -20,7 +20,7 @@ void pembukaan(string nama_mahasiwa[],
 
     // bagan tabel
     cout << "--------------------------------------------------------------------------------" << endl;
-    cout << "|  NO |" << right << setw(35) 
+    cout << "|  NO |" << right << setw(35) //right untuk memberi spasi kanan. setw(35) artinya sebanyak 35 space
          << "NAMA MAHASISWA" << right << setw(20) 
          << "|"  << right << setw(5) 
          << " GENDER " 
@@ -131,33 +131,34 @@ void descending(string nama_mahasiwa[],
      cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERBESAR!" << endl;
 }
 void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
-    int pilihan;
-    int cari_nilai;
-    string cari_nama;
-    bool ditemukan = false;
+    int pilihan; // variabel untuk user input awal ingin search lewat nama atau nilai
+    int cari_nilai; // variabel untuk mmenampung input user saat search lewat nilai
+    string cari_nama; // variabel untuk menampung input user saat search lewat nama
+    bool ditemukan = false; // nilai boolean jika kedua cara tadi sudah sesuai dengan yang diinput user
     
     cout << "Ingin Mencari nilai lewat apa ?" << endl;
     cout << "1. Nama" << endl;
     cout << "2. Nilai" << endl;
     cout << "Masukkan Pilihan : ";
-    cin >> pilihan;
-    cin.ignore();
+    cin >> pilihan; // input awal user
+    cin.ignore(); // Menghapus karakter sisa di dalam buffer input, biasanya karakter ENTER (\n).
 
+    // penggunaan switch untuk mempermudah dalam program, karena yang diinput user hanya 1 angka
         switch (pilihan) {
             case 1: cout << "Search Nama Yang Ingin Kamu Cari : ";
-                    getline(cin,cari_nama);
+                    getline(cin,cari_nama); // untuk menerima input dari beberapa kata
 
-                            for (int i = 0; i < kapasitas; i++) {
-                                    if (cari_nama == nama_mahasiswa[i]) {
+                            for (int i = 0; i < kapasitas; i++) { // perulangan jika index < dari total kapasitas(10) maka akan terus berulang untuk pengecekan
+                                    if (cari_nama == nama_mahasiswa[i]) { //validasi untuk input nama
                                         cout << "Nama kamu ada Pada Kolom Nomor - " << i + 1;
                                         cout << "\nDengan Nama : " << nama_mahasiswa[i];
                                         cout << "\nDengan Nilai : "<< array[i] << endl;
-                                        ditemukan = true;
-                                        break;
+                                        ditemukan = true; //jika nama yang di iput sesuai dengan data, maka nilai boolean menjadi true.
+                                        break; //sistem rehat sejanak 
                                    }     
                             }
 
-                            if (!ditemukan){
+                            if (!ditemukan){ //nilai "ditemukan = false", jadi kalau !, artinya nilai "ditemukan = true" yang dimana ini tidak sesuai dengan kondisi awal, maka sistem akan menjalankan fungsi ini.
                                  cout << "Maaf, Tidak Ada Mahasiswa Dengan Nama " << cari_nama << endl;
                                  cout << "Gunakan Satu Kapital Disetiap Awal Nama\n dan gunakan Nama Lengkap!" << endl;    
                              }   
@@ -165,7 +166,7 @@ void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
                     break;
                     case 2: 
                                 cout << "Search Nilai Yang Ingin Kamu Cari : ";
-                                cin >> cari_nilai;
+                                cin >> cari_nilai; //untuk input user lewat nilai
                                 bool deitemukan = false;
 
                                 for (int i = 0; i < kapasitas; i++) {
@@ -183,12 +184,6 @@ void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
                   
               } 
           } 
-
-void menu(){// dila
-
-    
-
-}
 
 int main(){
 
