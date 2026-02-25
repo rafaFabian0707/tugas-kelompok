@@ -154,7 +154,7 @@ void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
         //                     //     cout << "Search Nama Yang Ingin Kamu Cari : ";
         //                     //     getline(cin,cari_nama);
         //                     // }
-                               
+                            
         //                 } 
         //             }
         //     break;
