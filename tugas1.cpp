@@ -3,6 +3,8 @@
 // biasanya dipakai untuk mengatur lebar kolom, rata kanan kiri, dan format tabel
 #include <iomanip>
 using namespace std;
+// namespace std;
+
 
 // Penggunaan class untuk menyatukan banyak nya fungsi yang sudah
 class Program {
@@ -12,7 +14,7 @@ class Program {
 void pembukaan(string nama_mahasiwa[], 
                int array[], 
                int kapasitas,
-               char Gender[]) {
+               char Gender[]) { //penggunaan parameter untuk mengefesiensi program karena di deklasrasikan 1 kali di dalam fungsi main.
 
     // pembukaan
     cout << "SELAMAT DATANG DI PROGRAM APLIKASI ARRAY!" << endl;
@@ -20,7 +22,7 @@ void pembukaan(string nama_mahasiwa[],
 
     // bagan tabel
     cout << "--------------------------------------------------------------------------------" << endl;
-    cout << "|  NO |" << right << setw(35) 
+    cout << "|  NO |" << right << setw(35) //right untuk memberi spasi kanan. setw(35) artinya sebanyak 35 space
          << "NAMA MAHASISWA" << right << setw(20) 
          << "|"  << right << setw(5) 
          << " GENDER " 
@@ -44,11 +46,16 @@ void pembukaan(string nama_mahasiwa[],
     
 }
 
-void ascending(int array[], int kapsitas) {
+void ascending(string nama_mahasiwa[], 
+               int array[], 
+               int kapasitas,
+               char Gender[]) {
     int sementara;
-    for (int i = 0; i < kapsitas - 1; i++)// loop luar => untuk 9 kali putaran, setiap putaran menetukan angka terbesar ke terkecil, misalnya putaran 1 menetukan angka terbesar lalu putaran kedua menentukan angka terbesar kedua
+    string NamaSementara; // variabel untuk menampung nama sementara saat proses tukar data
+    char GenderSementara; // variabel untuk menampung gender sementara saat proses tukar data
+    for (int i = 0; i < kapasitas - 1; i++)// loop luar => untuk 9 kali putaran, setiap putaran menetukan angka terbesar ke terkecil, misalnya putaran 1 menetukan angka terbesar lalu putaran kedua menentukan angka terbesar kedua
     {
-        for (int j = 0; j < kapsitas - i - 1; j++)// loop dalam +> looping untuk membandingka data-data di dalam array
+        for (int j = 0; j < kapasitas - i - 1; j++)// loop dalam +> looping untuk membandingka data-data di dalam array
         {
             if (array[j] > array[j + 1])// if untuk membandingkan 2 angka yang bersebelahan, jika angka di sebelah kiri lebih besar maka akan ditukar posisinya dengan angka di sebelah kanan
             {
@@ -56,7 +63,16 @@ void ascending(int array[], int kapsitas) {
                 sementara = array[j]; //simpan angka sebelah kiri ke dalam variabel sementara
                 array[j] = array[j + 1]; // angka sebelah kanan dipindah ke kiri
                 array[j + 1] = sementara; // angka yang disimpan di variabel sementara(angka sebelah kiri) dipindah ke kanan
-            }
+
+                // menukar nama
+                NamaSementara = nama_mahasiwa[j];
+                nama_mahasiwa[j] = nama_mahasiwa[j + 1];
+                nama_mahasiwa[j + 1] = NamaSementara;
+
+                // menukar gender
+                GenderSementara = Gender[j];
+                Gender[j] = Gender[j + 1];
+                Gender[j + 1] = GenderSementara;
             
         }
         
@@ -69,12 +85,21 @@ void ascending(int array[], int kapsitas) {
     cout << "]\n";
 
     
-}
-void descending(int array[], int kapasitas) {
+} 
+   cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERKECIL!" << endl;
+} 
+
+void descending(string nama_mahasiwa[], 
+               int array[], 
+               int kapasitas,
+               char Gender[]) {
 
     int sementara; 
     // variabel ini cuma buat nampung angka sementara waktu proses tukar data
     // karena kalau langsung ditukar tanpa penampung, nilainya bisa hilang
+    string NamaSementara; // variabel untuk menampung nama sementara saat proses tukar data
+    char GenderSementara; // variabel untuk menampung gender sementara saat proses tukar data
+
 
     // loop luar ini buat ngatur berapa kali proses pengurutan dilakukan
     // misalnya ada 10 data, berarti maksimal 9 kali putaran
@@ -98,25 +123,41 @@ void descending(int array[], int kapasitas) {
                 // angka kanan dipindahkan ke kiri
                 array[j + 1] = sementara; 
                 // angka yang tadi disimpan dipindahkan ke kanan
+
+                // menukar nama
+                NamaSementara = nama_mahasiwa[j];
+                nama_mahasiwa[j] = nama_mahasiwa[j + 1];
+                nama_mahasiwa[j + 1] = NamaSementara;
+
+                // menukar gender
+                GenderSementara = Gender[j];
+                Gender[j] = Gender[j + 1];
+                Gender[j + 1] = GenderSementara;
+
             }
         }
     }
+<<<<<<< HEAD
     cout << "[ ";
     for (int i = 0; i < kapasitas - 1; i++)
     {
         cout << array[i] << " ";
     }
-    cout << "]\n";
+        cout << "]\n";
+
+     cout << "YEYY DATA BERHASIL DIURUTKAN DARI YANG TERBESAR!" << endl;
+
 }
 void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
-    int pilihan;
-    int cari_nilai;
-    string cari_nama;
+    int pilihan; // variabel untuk user input awal ingin search lewat nama atau nilai
+    int cari_nilai; // variabel untuk mmenampung input user saat search lewat nilai
+    string cari_nama; // variabel untuk menampung input user saat search lewat nama
+    bool ditemukan = false; // nilai boolean jika kedua cara tadi sudah sesuai dengan yang diinput user
     
-
     cout << "Ingin Mencari nilai lewat apa ?" << endl;
     cout << "1. Nama" << endl;
     cout << "2. Nilai" << endl;
+<<<<<<< HEAD
     cin >> pilihan;
 
 
@@ -178,13 +219,61 @@ void menu(){// dila
     cout << "\n" << endl;
 
 }
+=======
+    cout << "Masukkan Pilihan : ";
+    cin >> pilihan; // input awal user
+    cin.ignore(); // Menghapus karakter sisa di dalam buffer input, biasanya karakter ENTER (\n).
+
+    // penggunaan switch untuk mempermudah dalam program, karena yang diinput user hanya 1 angka
+        switch (pilihan) {
+            case 1: cout << "Search Nama Yang Ingin Kamu Cari : ";
+                    getline(cin,cari_nama); // untuk menerima input dari beberapa kata
+
+                            for (int i = 0; i < kapasitas; i++) { // perulangan jika index < dari total kapasitas(10) maka akan terus berulang untuk pengecekan
+                                    if (cari_nama == nama_mahasiswa[i]) { //validasi untuk input nama
+                                        cout << "Nama kamu ada Pada Kolom Nomor - " << i + 1;
+                                        cout << "\nDengan Nama : " << nama_mahasiswa[i];
+                                        cout << "\nDengan Nilai : "<< array[i] << endl;
+                                        ditemukan = true; //jika nama yang di iput sesuai dengan data, maka nilai boolean menjadi true.
+                                        break; //sistem rehat sejanak 
+                                   }     
+                            }
+
+                            if (!ditemukan){ //nilai "ditemukan = false", jadi kalau !, artinya nilai "ditemukan = true" yang dimana ini tidak sesuai dengan kondisi awal, maka sistem akan menjalankan fungsi ini.
+                                 cout << "Maaf, Tidak Ada Mahasiswa Dengan Nama " << cari_nama << endl;
+                                 cout << "Gunakan Satu Kapital Disetiap Awal Nama\n dan gunakan Nama Lengkap!" << endl;    
+                             }   
+                                                 
+                    break;
+                    case 2: 
+                                cout << "Search Nilai Yang Ingin Kamu Cari : ";
+                                cin >> cari_nilai; //untuk input user lewat nilai
+                                bool deitemukan = false;
+
+                                for (int i = 0; i < kapasitas; i++) {
+                                        if (cari_nilai == array[i]) {
+                                            cout << "Nilai kamu Ada Pada Kolom Nomor - " << i + 1;
+                                            cout << "\nDengan Nama : " << nama_mahasiswa[i];
+                                            cout << "\nDengan Nilai : "<< array[i] << endl;
+                                            ditemukan = true;
+                                       } 
+                                }    
+                                       if (!ditemukan) {
+                                        cout << "Maaf, Tidak Ada Mahasiswa Dengan Nilai " << cari_nilai << endl;  
+                                       }      
+                    break;
+                  
+              } 
+          } 
+>>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
 
 int main(){
 
     // data nama mahasiswa
-    string nama_mahasiswa[10] = {" Deyoan Salsabila", " Naydila Chairunnisa Rambe", 
-                                 " Diaz Pranata  Ginting", " Rafa Fabian", " Nayla Talisa", " M. Farhan Praditya Harahap",  " Farah Al Fariz Pane", " Muhammad Azizi", " Faridha Izzati Hasugian", 
-                                 " Chindi Christina Rajagukguk"};
+    string nama_mahasiswa[10] = {"Deyoan Salsabila", "Naydila Chairunisa Rambe", 
+                                 "Diaz Pranata  Ginting", "Rafa Fabian", "Nayla Talisa", 
+                                 "M. Farhan Praditya Harahap",  "Farah Al Fariz Pane", "Muhammad Azizih", "Faridha Izzati Hasugian", 
+                                 "Cindy Christina Rajagukguk"};
     char gender[10] = {'P', 'P', 'L', 'L', 'P',
                        'L', 'P', 'L', 'P', 'P' };
     
@@ -193,36 +282,43 @@ int main(){
     int size = 10;
     int pilih_menu;
 
-    do
-    {
+    do {
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
         cout << "=========== MENU ===========" << endl;
         cout << "1. Tampilkan Data" << endl;
         cout << "2. Mencari Suatu Nilai" << endl;
         cout << "3. Urutkan Nilai Ascending" << endl;
         cout << "4. Urutkan Nilai Descending" << endl;
         cout << "5. Keluar" << endl;
+<<<<<<< HEAD
         cout << "Pilih mana manis :V >> \n";
+=======
+>>>>>>> eb3832bd9391558cf89bdbbd3a2a6f89b7b4d786
         cout<<"Masukkan pilihan : ";
         cin >> pilih_menu;
 
-        switch (pilih_menu) {
-        case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
-        break;
-        case 2: search(nilai, size, nama_mahasiswa); // memanggil fungsi pembukaan
-        break;
-        case 3: ascending(nilai, size); // memanggil fungsi ascending
-        break;
-        case 4: descending(nilai, size);
-        break;
-        case 5: cout << "Kamu Telah Keluar Dari Program";
-        break;
-        }
-    } while (pilih_menu != 5);
-    
-
-    
+            switch (pilih_menu) {
+            case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
+            break;
+            case 2:system("cls"); // untuk membersihkan output setelah menekan   enter.
+                   search(nilai, size, nama_mahasiswa); // memanggil fungsi pembukaan
+            break;
+            case 3: system("cls"); // untuk membersihkan output setelah menekan   enter.
+                    ascending(nama_mahasiswa, nilai, size, gender); // memanggil fungsi ascending
+                    pembukaan(nama_mahasiswa, nilai, size, gender);
+            break;
+            case 4: system("cls"); // untuk membersihkan output setelah menekan   enter.
+                    descending(nama_mahasiswa, nilai, size, gender);
+                    pembukaan(nama_mahasiswa, nilai, size, gender);
+            break;
+            case 5: cout << "Kamu Telah Keluar Dari Program";
+            break;
+            }
+        } while (pilih_menu != 5);
 
     return 0;
 }
