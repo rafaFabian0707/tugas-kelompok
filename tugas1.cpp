@@ -99,48 +99,56 @@ void search(int array[], int kapasitas, string nama_mahasiswa[]) {// nayla
     int pilihan;
     int cari_nilai;
     string cari_nama;
+    bool ditemukan = false;
     
-
     cout << "Ingin Mencari nilai lewat apa ?" << endl;
     cout << "1. Nama" << endl;
     cout << "2. Nilai" << endl;
+    cout << "Masukkan Pilihan : ";
+    cin >> pilihan;
+    cin.ignore();
 
         switch (pilihan) {
             case 1: cout << "Search Nama Yang Ingin Kamu Cari : ";
                     getline(cin,cari_nama);
 
-                    for (int i = 0; i < kapasitas; i++) {
-                        if (cari_nama == nama_mahasiswa[i])
-                        {
-                            cout << "Nama kamu ada di index ke - " << i + 1;
-                            cout << "\nDengan Nama : " << nama_mahasiswa[i];
-                            cout << "\nDengan Nilai : "<< array[i];
-                        } else {
-                            cout << "Maaf, Gunakan Satu Kapital Disetiap Awal Nama" << endl;
-
-                            while (cari_nama != nama_mahasiswa[i]) {
-                                cout << "Search Nama Yang Ingin Kamu Cari : ";
-                                getline(cin,cari_nama);
+                            for (int i = 0; i < kapasitas; i++) {
+                                    if (cari_nama == nama_mahasiswa[i]) {
+                                        cout << "Nama kamu ada Pada Kolom Nomor - " << i + 1;
+                                        cout << "\nDengan Nama : " << nama_mahasiswa[i];
+                                        cout << "\nDengan Nilai : "<< array[i] << endl;
+                                        ditemukan = true;
+                                        break;
+                                   }     
                             }
-                               
-                        } 
-                    }
-            break;
-            case 2: cout << "Search Nilai Yang Ingin Kamu Cari : ";
-                    cin >> cari_nilai;
 
-                    for (int i = 0; i < kapasitas; i++) {
-                        if (pilihan == array[i])
-                        {
-                            cout << "Nilai kamu ada di index ke - " << i + 1;
-                            cout << "\nDengan Nama : " << nama_mahasiswa[i];
-                            cout << "\nDengan Nilai : "<< array[i];
-                        }
-                    } 
-            break;
-        };
-    
-}
+                            if (!ditemukan){
+                                 cout << "Maaf, Tidak Ada Mahasiswa Dengan Nama " << cari_nama << endl;
+                                 cout << "Gunakan Satu Kapital Disetiap Awal Nama\n dan gunakan Nama Lengkap!" << endl;    
+                             }   
+                                                 
+                    break;
+                    case 2: 
+                                cout << "Search Nilai Yang Ingin Kamu Cari : ";
+                                cin >> cari_nilai;
+                                bool deitemukan = false;
+
+                                for (int i = 0; i < kapasitas; i++) {
+                                        if (cari_nilai == array[i]) {
+                                            cout << "Nilai kamu Ada Pada Kolom Nomor - " << i + 1;
+                                            cout << "\nDengan Nama : " << nama_mahasiswa[i];
+                                            cout << "\nDengan Nilai : "<< array[i] << endl;
+                                            ditemukan = true;
+                                       } 
+                                }    
+                                       if (!ditemukan) {
+                                        cout << "Maaf, Tidak Ada Mahasiswa Dengan Nilai " << cari_nilai << endl;  
+                                       }      
+                    break;
+                  
+              } 
+          } 
+
 void menu(){// dila
 
     
@@ -150,9 +158,10 @@ void menu(){// dila
 int main(){
 
     // data nama mahasiswa
-    string nama_mahasiswa[10] = {" Deyoan Salsabila", " Naydila Chairunnisa Rambe", 
-                                 " Diaz Pranata  Ginting", " Rafa Fabian", " Nayla Talisa", " M. Farhan Praditya Harahap",  " Farah Al Fariz Pane", " Muhammad Azizi", " Faridha Izzati Hasugian", 
-                                 " Chindi Christina Rajagukguk"};
+    string nama_mahasiswa[10] = {"Deyoan Salsabila", "Naydila Chairunisa Rambe", 
+                                 "Diaz Pranata  Ginting", "Rafa Fabian", "Nayla Talisa", 
+                                 "M. Farhan Praditya Harahap",  "Farah Al Fariz Pane", "Muhammad Azizih", "Faridha Izzati Hasugian", 
+                                 "Cindy Christina Rajagukguk"};
     char gender[10] = {'P', 'P', 'L', 'L', 'P',
                        'L', 'P', 'L', 'P', 'P' };
     
