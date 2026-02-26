@@ -177,17 +177,18 @@ int main(){
     int nilai[10] = {75, 60, 85, 90, 70, 88, 65, 80, 93, 62};
     int size = 10;
     int pilih_menu;
+    bool jalan = true;
 
-    do {
-
-        cout << "=========== MENU ===========" << endl;
-        cout << "1. Tampilkan Data" << endl;
-        cout << "2. Mencari Suatu Nilai" << endl;
-        cout << "3. Urutkan Nilai Ascending" << endl;
-        cout << "4. Urutkan Nilai Descending" << endl;
-        cout << "5. Keluar" << endl;
-        cout<<"Masukkan pilihan : ";
-        cin >> pilih_menu;
+    
+        while(jalan){
+             cout << "=========== MENU ===========" << endl;
+            cout << "1. Tampilkan Data" << endl;
+            cout << "2. Mencari Suatu Nilai" << endl;
+            cout << "3. Urutkan Nilai Ascending" << endl;
+            cout << "4. Urutkan Nilai Descending" << endl;
+            cout << "5. Keluar" << endl;
+            cout<<"Masukkan pilihan : ";
+            cin >> pilih_menu;
 
             switch (pilih_menu) {
             case 1: pembukaan(nama_mahasiswa, nilai, size, gender); //memanggil fungsi pembukaan
@@ -205,8 +206,16 @@ int main(){
             break;
             case 5: cout << "Kamu Telah Keluar Dari Program";
             break;
+            default:
+                  cout << "Tidak ada menu dengan nomor " << pilih_menu << endl;
             }
-        } while (pilih_menu != 5);
-
+            if (pilih_menu < 1 || pilih_menu >= 5)
+            {
+                jalan = false;
+            }
+            
+        }
+       
+        
     return 0;
 }
