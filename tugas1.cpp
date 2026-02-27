@@ -1,4 +1,9 @@
 // KELOMPOK 6 KOM C TUGAS 2
+// Deyoan Salsabila 133 
+// Naydila Chairunisa Rambe 045
+// Diaz Pranata  Ginting 071
+// Rafa Fabian 035 
+// Nayla Talisa 144
 
 #include <iostream>
 // penggunaan io manip untuk input output manipulation 
