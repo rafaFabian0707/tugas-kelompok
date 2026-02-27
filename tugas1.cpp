@@ -1,3 +1,5 @@
+// KELOMPOK 6 KOM C TUGAS 2
+
 #include <iostream>
 // penggunaan io manip untuk input output manipulation 
 // biasanya dipakai untuk mengatur lebar kolom, rata kanan kiri, dan format tabel
